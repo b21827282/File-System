@@ -1,0 +1,1509 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bytescout.PDFRenderer</name>
+    </assembly>
+    <members>
+        <member name="T:Bytescout.PDFRenderer.OngoingOperation">
+            <summary>
+            The ongoing operation for <see cref="E:Bytescout.PDFRenderer.BaseRenderer.ProgressChanged" /> event.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.OngoingOperation.DocumentLoading">
+            <summary>
+            Document is being loaded.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.OngoingOperation.DocumentProcessing">
+            <summary>
+            Document is being processed.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.BaseRenderer">
+            <summary>
+             Defines a base class for PDF renderers.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.BaseRenderer.ParsingErrorEventHandler">
+            <summary>
+            Defines ParsingError event parameters.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="exceptionInfo">Internal information about the parsing error.</param>
+            <param name="abort">Interruption flag. If <c>true</c> the renderer will throw an exception that interrupts the processing.</param>
+        </member>
+        <member name="E:Bytescout.PDFRenderer.BaseRenderer.ParsingError">
+            <inheritdoc />
+        </member>
+        <member name="T:Bytescout.PDFRenderer.BaseRenderer.ProgressEventHandler">
+            <summary>
+            Defines progress event parameters.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="ongoingOperation">Ongoing operaration the progress reported from.</param>
+            <param name="progress">Progress value from 0 to 100.</param>
+            <param name="cancel">Interruption flag. Set it <c>true</c> to interrupt the processing.</param>
+        </member>
+        <member name="E:Bytescout.PDFRenderer.BaseRenderer.ProgressChanged">
+            <inheritdoc />
+        </member>
+        <member name="E:Bytescout.PDFRenderer.BaseRenderer.PasswordRequired">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.RegistrationName">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.RegistrationKey">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.Password">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.Version">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.LicenseInfo">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.Profiles">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.#ctor">
+            <summary>
+             Protected constructor.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.#ctor(System.String,System.String)">
+            <summary>
+             Initializes a new instance of the renderer class.
+            </summary>
+            <param name="registrationName">Registration name.</param>
+            <param name="registrationKey">Registration key.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.Dispose">
+            <summary>
+            Releases the unmanaged resources used by the instance and optionally releases the managed resources.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.Reset">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.LoadDocumentFromFile(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.LoadDocumentFromStream(System.IO.Stream)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.GetPageCount">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.GetPageRectangle(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.GetPageRectangle(System.Int32,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.GetPageRect_Left(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.GetPageRect_Top(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.GetPageRect_Width(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.GetPageRect_Height(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.ExtractionArea">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.BaseRenderer.ExtractionAreaRect">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.SetExtractionArea(System.Drawing.RectangleF)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.SetExtractionArea(System.Single,System.Single,System.Single,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.ResetExtractionArea">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.LoadProfiles(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.LoadProfilesFromString(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.LoadAndApplyProfiles(System.String,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.CreateProfile(System.String,System.String,Bytescout.PDFRenderer.RenderingOptions,System.Boolean,System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.BaseRenderer.CreateProfile(System.String,Bytescout.PDFRenderer.RenderingOptions,System.Boolean,System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Bytescout.PDFRenderer.DocumentPrinter">
+            <summary>
+             DocumentPrinter class helps to send PDF document to a printer in silent mode.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.Password">
+            <summary>
+             Password for protected PDF documents.
+            </summary>
+        </member>
+        <member name="E:Bytescout.PDFRenderer.DocumentPrinter.PasswordRequired">
+            <summary>
+             Occurs when the password required to decrypt PDF document.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.RegistrationName">
+            <summary>
+             Registration name.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.RegistrationKey">
+            <summary>
+             Registration key.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.Margins">
+            <summary>
+            Gets or sets the margins for printed page. 
+            </summary>
+            <value>
+            A <see cref="T:System.Drawing.Printing.Margins" /> that represents the margins, in hundredths of an inch, for the page. 
+            The default is no margins on all sides because PDF documents usually contains margins already.
+            </value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.Landscape">
+            <summary>
+            Gets or sets a value indicating whether the page is printed in landscape or portrait orientation.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.Copies">
+            <summary>
+            Gets or sets the number of copies of the document to print.
+            <para>Note: Not all printers support printing multiple copes.</para></summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.Collate">
+            <summary>
+            Gets or sets a value indicating whether the printed document is collated.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.Duplex">
+            <summary>
+            Gets or sets the printer setting for double-sided printing (duplex). To set duplex mode by name use
+            the <see cref="M:Bytescout.PDFRenderer.DocumentPrinter.SetDuplex(System.String)" /> method.
+            <para>Note: Not all printers support the duplex printing.</para></summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.Color">
+            <summary>
+            Gets or sets a value indicating whether the page should be printed in color.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.PaperSize">
+            <summary>
+            Gets or sets the paper size for the page. To set paper size by name use the <see cref="M:Bytescout.PDFRenderer.DocumentPrinter.SetPaperSize(System.String)" /> method.
+            </summary>
+            <value>
+                <see cref="T:System.Drawing.Printing.PaperSize" /> object.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.PaperSource">
+            <summary>
+            Gets or sets the page's paper source; for example, the printer's upper tray. 
+            To set paper source by its predefined name use the <see cref="M:Bytescout.PDFRenderer.DocumentPrinter.SetPaperSource(System.String)" /> method.
+            </summary>
+            <value>
+                <see cref="T:System.Drawing.Printing.PaperSource" /> object.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.DocumentPrinter.PrinterResolution">
+            <summary>
+            Gets or sets the printer resolution for the page. To set resolution by its predefined name 
+            use the <see cref="M:Bytescout.PDFRenderer.DocumentPrinter.SetPrinterResolution(System.String)" /> method. To set custom resolution use
+            the <see cref="M:Bytescout.PDFRenderer.DocumentPrinter.SetPrinterResolution(System.Int32,System.Int32)" /> method.
+            </summary>
+            <value>
+                <see cref="T:System.Drawing.Printing.PrinterResolution" /> object.</value>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.DocumentPrinter" /> class.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.#ctor(System.String,System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.DocumentPrinter" /> class.
+             </summary>
+            <param name="registrationName">Registration name.</param>
+            <param name="registrationKey">Registration key.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.Dispose">
+            <summary>
+            Releases the unmanaged resources used by the instance and optionally releases the managed resources.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.LoadDocumentFromFile(System.String)">
+            <summary>
+             Loads PDF document from specified file. 
+            </summary>
+            <param name="fileName">File name.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.LoadDocumentFromStream(System.IO.Stream)">
+            <summary>
+             Loads PDF document from provided stream.
+            </summary>
+            <param name="documentFileStream">Input stream.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.PrintDocument(System.String)">
+            <summary>
+            Prints all document pages to specified printer.
+            </summary>
+            <param name="printerName">Printer name.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.PrintDocument(System.String,System.String)">
+            <summary>
+            Prints selected pages to specified printer.
+            </summary>
+            <param name="printerName">Printer name.</param>
+            <param name="pages">Comma-separated list of page numbers in form "1-4,5,7,8-15,16-". Page numbers are 1-based. Ending "-" means "to the last page".</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.PrintDocument(System.String,System.Int32,System.Int32)">
+            <summary>
+            Prints selected pages to specified printer.
+            </summary>
+            <param name="printerName">Printer name.</param>
+            <param name="startPage">0-based index of the start page.</param>
+            <param name="endPage">0-based index of the end page.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.PrintDocument(System.String,System.Int32[])">
+            <summary>
+            Prints selected pages to specified printer.
+            </summary>
+            <param name="printerName">Printer name.</param>
+            <param name="pages">Array of 0-based page indexes.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.SetMargins(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the margins for the printed page. 
+            </summary>
+            <param name="leftMargin">Left margin in hundredths of an inch.</param>
+            <param name="topMargin">Top margin in hundredths of an inch.</param>
+            <param name="rightMargin">Right margin in hundredths of an inch.</param>
+            <param name="bottomMargin">Bottom margin in hundredths of an inch.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.SetPaperSize(System.String)">
+            <summary>
+            Sets paper format by predefined name, such as "A4" or "Letter". The predefined names
+            of paper formats should correspond to the <see cref="T:System.Drawing.Printing.PaperKind" /> enumeration.
+            </summary>
+            <param name="paperFormat">Name of the paper format.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.SetDuplex(System.String)">
+            <summary>
+            Sets duplex mode by predefined name. The predefined names of duplex modes should correspond
+            to the <see cref="T:System.Drawing.Printing.Duplex" /> enumeration.
+            </summary>
+            <param name="duplexModeName">Name of the duplex mode.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.SetPaperSource(System.String)">
+            <summary>
+            Sets paper source by predefined name. The names of predefined paper sources should correspond
+            to the <see cref="T:System.Drawing.Printing.PaperSourceKind" /> enumeration.
+            </summary>
+            <param name="paperSourceName">Paper source name.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.SetPrinterResolution(System.String)">
+            <summary>
+            Sets printer resolution by predefined name such as "High" or "Draft". The names of predefined resolutions
+            should correspond to the <see cref="T:System.Drawing.Printing.PrinterResolutionKind" /> enumeration.
+            </summary>
+            <param name="printerResolutionName">Name of predefined resolution value.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.DocumentPrinter.SetPrinterResolution(System.Int32,System.Int32)">
+            <summary>
+            Sets custom printer resolution.
+            </summary>
+            <param name="horizontalResolution">Horizontal resolution value.</param>
+            <param name="verticalResolution">Vertical resolution value.</param>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.IRenderingOptions">
+            <summary>
+            Rendering options.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.TextSmoothingMode">
+            <summary>
+            Gets or sets the text smoothing mode.
+            </summary>
+            <value>
+            The text smoothing mode.
+            </value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.VectorSmoothingMode">
+            <summary>
+            Gets or sets the vector smoothing mode.
+            </summary>
+            <value>
+            The vector smoothing mode.
+            </value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.ImageInterpolationMode">
+            <summary>
+            Gets or sets the image interpolation mode.
+            </summary>
+            <value>
+            The image interpolation mode.
+            </value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.RenderTextObjects">
+            <summary>
+            Gets or sets whether to render text objects. True by default.
+            </summary>
+            <value>
+                <c>True</c> if render text objects; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.RenderVectorObjects">
+            <summary>
+            Gets or sets whether to render vector objects. True by default.
+            </summary>
+            <value>
+                <c>True</c> if render vector objects; otherwise, <c>false</c>.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.RenderImageObjects">
+            <summary>
+            Gets or sets whether to render image objects. True by default.
+            </summary>
+            <value>
+                <c>True</c> if render image objects; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.RenderCurveVectorObjects">
+            <summary>
+            Gets or sets whether to render curve vector objects. True by default.
+            </summary>
+            <remarks>
+            Use <c>RenderCurveVectorObjects</c> if you need to hide curves but keep straight lines.
+            Use <see cref="P:Bytescout.PDFRenderer.IRenderingOptions.RenderVectorObjects" /> if you need to hide all vector drawings.
+            <see cref="P:Bytescout.PDFRenderer.IRenderingOptions.RenderVectorObjects" /> property supersedes <c>RenderCurveVectorObjects</c>.
+            </remarks>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.PreferSystemFonts">
+            <summary>
+            Gets or sets whether to prefer fonts installed in system instead of fonts embedded into PDF document. Only fonts with identical names and font family will be substituted.
+            </summary>
+            <value>
+                <c>True</c> if prefer system fonts; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.JPEGQuality">
+            <summary>
+            Gets or sets the quality of output JPEG images.
+            </summary>
+            <value>The integer that represents the quality of JPEG output images. From 0 (min size) to 100 (max quality). Default is 80.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.TIFFCompression">
+            <summary>
+            Gets or sets the compression type of output TIFF images. Default is TIFFCompression.LZW.
+            </summary>
+            <value>TIFF compression type.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.RotateFlipType">
+            <summary>
+            Gets or sets the rotation of output image. Default is RotateFlipType.RotateNoneFlipNone.
+            </summary>
+            <value>One of <see cref="P:Bytescout.PDFRenderer.IRenderingOptions.RotateFlipType" /> enumeration values.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.ImageBitsPerPixel">
+            <summary>
+            Gets or sets output images pixel format (bits per pixel). Default is 24 BPP.
+            </summary>
+            <value>One of <see cref="P:Bytescout.PDFRenderer.IRenderingOptions.ImageBitsPerPixel" /> enumeration values.</value>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.OneBitConversionAlgorithm">
+            <summary>
+            The algorithm to use for conversion to 1-bit (black and white) image.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.FontHintingMode">
+            <summary>
+            Gets or sets the font hinting mode. Affects the appearance of small fonts.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.ResolutionOverride">
+            <summary>
+            Use this property if you need to override the resolution field of the generated image.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IRenderingOptions.NightMode">
+            <summary>
+            Gets or sets whether the "Night Mode" is enabled. In the night mode document is rendered
+            with black background, black text becomes white, images are dimmed.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.IVectorRenderer">
+            <summary>
+             Defines the PDF to Vector image rendering interface.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.GetMetafile(System.Int32,System.Single)">
+            <summary>
+            Renders document page to <see cref="T:System.Drawing.Imaging.Metafile" />.
+            </summary>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <returns>
+                <see cref="T:System.Drawing.Imaging.Metafile" /> object.</returns>
+            <remarks>Pixel dimensions of the image will be calculated from PDF document Points (1/72") using the rendering resolution value.</remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.GetMetafile(System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders document page to <see cref="T:System.Drawing.Imaging.Metafile" />.
+            </summary>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <returns>
+                <see cref="T:System.Drawing.Imaging.Metafile" /> object.</returns>
+            <remarks>Pixel dimensions of the image will be calculated from PDF document Points (1/72") using the rendering resolution value.</remarks>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.GetMetafile(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders document page to <see cref="T:System.Drawing.Imaging.Metafile" />.
+            </summary>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <returns>
+                <see cref="T:System.Drawing.Imaging.Metafile" /> object.</returns>
+            <remarks>Pixel dimensions of the image will be calculated from PDF document Points (1/72") using the rendering resolution value.</remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.GetMetafile(System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders document page to <see cref="T:System.Drawing.Imaging.Metafile" />.
+            </summary>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <returns>
+                <see cref="T:System.Drawing.Imaging.Metafile" /> object.</returns>
+            <remarks>Pixel dimensions of the image will be calculated from PDF document Points (1/72") using the rendering resolution value.</remarks>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.String,System.Int32,System.Single)">
+            <summary>
+            Renders document page to EMF file.
+            </summary>
+            <param name="fileName">Output file name.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.String,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders document page to EMF file.
+            </summary>
+            <param name="fileName">Output file name.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders document page to EMF file.
+            </summary>
+            <param name="fileName">Output file name.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.String,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders document page to EMF file.
+            </summary>
+            <param name="fileName">Output file name.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.IO.Stream,System.Int32,System.Single)">
+            <summary>
+            Renders document page to stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.IO.Stream,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders document page to stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.IO.Stream,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders document page to stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IVectorRenderer.Save(System.IO.Stream,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders document page to stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="pageIndex">Index of the page.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.IRasterRenderer">
+            <summary>
+             Defines PDF to raster image renderer interface.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.GetImage(System.Int32,System.Single)">
+            <summary>
+            Renders PDF document page to <see cref="T:System.Drawing.Image" /> object.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <returns>
+                <see cref="T:System.Drawing.Image" /> object.</returns>
+            <remarks>Pixel dimensions of the image will be calculated from PDF document Points (1/72") using the rendering resolution value.</remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.GetImage(System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page to <see cref="T:System.Drawing.Image" /> object.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+            <returns>
+                <see cref="T:System.Drawing.Image" /> object.</returns>
+            <remarks>Pixel dimensions of the image will be calculated from PDF document Points (1/72") using the rendering resolution value.</remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.GetImage(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders PDF document page to <see cref="T:System.Drawing.Image" /> object.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <returns>
+                <see cref="T:System.Drawing.Image" /> object.</returns>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.GetImage(System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page to <see cref="T:System.Drawing.Image" /> object.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+            <returns>
+                <see cref="T:System.Drawing.Image" /> object.</returns>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single)">
+            <summary>
+            Renders PDF document page to image file in specified format.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page to image file in specified format.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders PDF document page to image file in specified format.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page to image file in specified format.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single)">
+            <summary>
+            Renders PDF document page as image file in specified format to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page as image file in specified format to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders PDF document page as image file in specified format to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page as image file in specified format to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="outputFormat">Output image format.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Single)">
+            <summary>
+            Renders PDF document page range to multi-page TIFF file.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page range to multi-page TIFF file.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders PDF document page range to multi-page TIFF file.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page range to multi-page TIFF file.
+            </summary>
+            <param name="destFileName">Destination file name.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index.</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Single)">
+            <summary>
+            Renders PDF document page range as multi-page TIFF file to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page range as multi-page TIFF file to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index.</param>
+            <param name="renderingResolution">Rendering resolution, in pixels per inch.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Renders PDF document page range as multi-page TIFF file to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index. Use -1 to specify "to the last page".</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IRasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Renders PDF document page range as multi-page TIFF file to stream.
+            </summary>
+            <param name="destStream">Destination stream.</param>
+            <param name="startPageIndex">Start page index.</param>
+            <param name="endPageIndex">End page index. Use -1 to specify "to the last page".</param>
+            <param name="width">Width of the output image in pixels. Use -1 to calculate the width from <c>height</c> keeping the aspect ratio.</param>
+            <param name="height">Height of the output image in pixels. Use -1 to calculate the height from <c>width</c> keeping the aspect ratio.</param>
+            <param name="renderingOptions">Additional conversion options.</param>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.IBaseRenderer">
+            <summary>
+             Defines a base interface for PDF renderers.
+            </summary>
+        </member>
+        <member name="E:Bytescout.PDFRenderer.IBaseRenderer.PasswordRequired">
+            <summary>
+             Occurs when the password required to decrypt the document.
+            </summary>
+        </member>
+        <member name="E:Bytescout.PDFRenderer.IBaseRenderer.ParsingError">
+            <summary>
+            Raised on PDF document parsing errors. This usually indicates a damaged document.
+            </summary>
+            <remarks>
+            If this event is handled, and the <c>abort</c> in the event args was set to <c>false</c>, 
+            the renderer will skip the error and try to process the document further. 
+            Otherwise the renderer will throw an exception interrupting the processing.
+            </remarks>
+        </member>
+        <member name="E:Bytescout.PDFRenderer.IBaseRenderer.ProgressChanged">
+            <summary>
+            Raised for each reported progress value. Allows to cancel the processing.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IBaseRenderer.RegistrationName">
+            <summary>
+             Registration name.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IBaseRenderer.RegistrationKey">
+            <summary>
+             Registration key.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IBaseRenderer.Password">
+            <summary>
+             PDF document owner password.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IBaseRenderer.Version">
+            <summary>
+             Gets the component version number.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IBaseRenderer.LicenseInfo">
+            <summary>
+            Gets license information.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.Reset">
+            <summary>
+             Resets the instance, disposes internal resources and releases the file.
+             Use this method before loading another PDF file.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.LoadDocumentFromFile(System.String)">
+            <summary>
+             Loads PDF document from specified file.
+            </summary>
+            <param name="fileName">File name.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.LoadDocumentFromStream(System.IO.Stream)">
+            <summary>
+             Loads PDF document from provided stream.
+            </summary>
+            <param name="documentFileStream">Input stream.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.GetPageCount">
+            <summary>
+             Returns document page count.
+            </summary>
+            <returns>Page count.</returns>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.GetPageRectangle(System.Int32)">
+            <summary>
+            Gets the page rectangle in PDF Points (1 Point = 1/72 in.).
+            </summary>
+            <param name="pageIndex">Page index.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.GetPageRectangle(System.Int32,System.Boolean)">
+            <summary>
+            Gets the page rectangle in PDF Points (1 Point = 1/72 in.).
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <param name="ignoreCropBox">If <c>true</c>, the method will return full size of the page
+            ignoring the cropping rectangle set by document author.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.GetPageRect_Left(System.Int32)">
+            <summary>
+            Gets the specified page left coordinate.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <returns>Left coordinate in points.</returns>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.GetPageRect_Top(System.Int32)">
+            <summary>
+            Gets the specified page top coordinate.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <returns>Top coordinate in points.</returns>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.GetPageRect_Width(System.Int32)">
+            <summary>
+            Gets the specified page width.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <returns>Page width in points.</returns>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.GetPageRect_Height(System.Int32)">
+            <summary>
+            Gets the specified page height.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <returns>Page height in points.</returns>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IBaseRenderer.ExtractionArea">
+            <summary>
+             Sets the extraction area by coordinates and dimensions.
+            </summary>
+            <value>Array of <see cref="T:System.Double" /> representing extraction area coordinates and dimensions
+             (left, top, width, height).</value>
+            <remarks>
+             Note: the extraction rectangle is reset on document loading, so you should set it after the loading.
+             </remarks>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IBaseRenderer.ExtractionAreaRect">
+            <summary>
+             Sets the extraction area by rectangle.
+            </summary>
+            <value>See <see cref="T:System.Drawing.RectangleF" /> object representing the extraction area.</value>
+            <remarks>
+             Note: the extraction rectangle is reset on document loading, so you should set it after the loading.
+             </remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.SetExtractionArea(System.Drawing.RectangleF)">
+            <summary>
+             Sets the extraction area by rectangle.
+            </summary>
+            <param name="rectangle">Rectangle.</param>
+            <remarks>
+             Note: the extraction rectangle is reset on document loading, so you should set it after the loading.
+             </remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.SetExtractionArea(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+             Sets the extraction area by coordinates and dimensions.
+            </summary>
+            <param name="left"></param>
+            <param name="top"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <remarks>
+             Note: the extraction rectangle is reset on document loading, so you should set it after the loading.
+             </remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.SetExtractionArea(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+             Sets the extraction area by coordinates and dimensions.
+            </summary>
+            <param name="left"></param>
+            <param name="top"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <remarks>
+             Note: the extraction rectangle is reset on document loading, so you should set it after the loading.
+             </remarks>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IBaseRenderer.ResetExtractionArea">
+            <summary>
+             Resets the extraction area to full page.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.IProfiles">
+            <summary>
+             Defines profiles support.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.IProfiles.Profiles">
+            <summary>
+            Comma-separated list of profiles to apply to the extractor. Profiles must be previously loaded.
+            </summary>
+            <seealso cref="M:Bytescout.PDFRenderer.IProfiles.LoadProfiles(System.String)" />
+            <seealso cref="M:Bytescout.PDFRenderer.IProfiles.LoadProfilesFromString(System.String)" />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IProfiles.LoadProfiles(System.String)">
+            <summary>
+            Loads profiles from JSON file.
+            </summary>
+            <param name="fileName">JSON file containing profiles.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IProfiles.LoadProfilesFromString(System.String)">
+            <summary>
+            Loads profiles from JSON string.
+            </summary>
+            <param name="jsonString">JSON string containing profiles.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IProfiles.LoadAndApplyProfiles(System.String,Bytescout.PDFRenderer.RenderingOptions)">
+            <summary>
+            Loads profiles from JSON string and automatically applies them. Note that profiles containing
+            detection keywords will be deferred until the extraction.
+            </summary>
+            <remarks>Note, all existing profiles are discarded before loading profiles from the provided string.</remarks>
+            <param name="jsonString">JSON string containing profiles.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IProfiles.CreateProfile(System.String,System.String,Bytescout.PDFRenderer.RenderingOptions,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates JSON profile will all extractor properties with current values.
+            </summary>
+            <param name="profileName">Name of profile (without spaces).</param>
+            <param name="outputFileName">Output file name.</param>
+            <param name="renderingOptions">
+                <see cref="T:Bytescout.PDFRenderer.RenderingOptions" /> object.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.IProfiles.CreateProfile(System.String,Bytescout.PDFRenderer.RenderingOptions,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates JSON profile will all extractor properties with current values.
+            </summary>
+            <param name="profileName">Name of profile (without spaces).</param>
+            <returns>JSON string.</returns>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.PDFRendererException">
+            <summary>
+             Represents errors that occur during PDF extraction process.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererException.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererException.#ctor(System.String,System.Exception)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.PDFRendererInvalidPasswordException">
+            <summary>
+             Invalid password exception.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererInvalidPasswordException.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererInvalidPasswordException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererInvalidPasswordException.#ctor(System.String,System.Exception)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererInvalidPasswordException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.PDFRendererDamagedDocumentException">
+            <summary>
+             Invalid password exception.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererDamagedDocumentException.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererInvalidPasswordException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererDamagedDocumentException.#ctor(System.String,System.Exception)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererInvalidPasswordException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.PDFRendererCancellationException">
+            <summary>
+            Cancellation exception.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererCancellationException.#ctor">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererCancellationException" /> class.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererCancellationException.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererCancellationException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.PDFRendererCancellationException.#ctor(System.String,System.Exception)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.PDFRendererCancellationException" /> class.
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.LicenseInfo">
+            <summary>
+            License information.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.LicenseInfo.LicenseType">
+            <summary>
+            License type.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.LicenseInfo.UpdatesExpireOn">
+            <summary>
+            Support and updates expiration date.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.LicenseInfo.LimitType">
+            <summary>
+            License limit type.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.LicenseInfo.LimitTerm">
+            <summary>
+            License limit term.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.LicenseInfo.Limit">
+            <summary>
+            Limit of license units.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.LicenseInfo.Remainder">
+            <summary>
+            Number of remaining license units.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.LicenseInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Bytescout.PDFRenderer.GraphicsTransformationQuality">
+            <summary>
+            Defines smoothing quality for text and vector graphics; interpolation quality for raster images.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.GraphicsTransformationQuality.HighQuality">
+            <summary>
+            Hight quality.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.GraphicsTransformationQuality.HighSpeed">
+            <summary>
+            High speed.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.RotateFlipType">
+            <summary> 
+            Specifies the direction of an image's rotation and the axis used to flip the image.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate180FlipXY">
+            <summary>
+            Specifies a 180-degree rotation followed by a horizontal and vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.RotateNoneFlipNone">
+            <summary>
+            Specifies no rotation and no flipping.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate270FlipXY">
+            <summary>
+            Specifies a 270-degree rotation followed by a horizontal and vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate90FlipNone">
+            <summary>
+            Specifies a 90-degree rotation without flipping.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate180FlipNone">
+            <summary>
+            Specifies a 180-degree rotation without flipping.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.RotateNoneFlipXY">
+            <summary>
+            Specifies no rotation followed by a horizontal and vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate270FlipNone">
+            <summary>
+            Specifies a 270-degree rotation without flipping.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate90FlipXY">
+            <summary>
+            Specifies a 90-degree rotation followed by a horizontal and vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate180FlipY">
+            <summary>
+            Specifies a 180-degree rotation followed by a vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.RotateNoneFlipX">
+            <summary>
+            Specifies no rotation followed by a horizontal flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate90FlipX">
+            <summary>
+            Specifies a 90-degree rotation followed by a horizontal flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate270FlipY">
+            <summary>
+            Specifies a 270-degree rotation followed by a vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.RotateNoneFlipY">
+            <summary>
+            Specifies no rotation followed by a vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate180FlipX">
+            <summary>
+            Specifies a 180-degree rotation followed by a horizontal flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate90FlipY">
+            <summary>
+            Specifies a 90-degree rotation followed by a vertical flip.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RotateFlipType.Rotate270FlipX">
+            <summary>
+            Specifies a 270-degree rotation followed by a horizontal flip.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.TIFFCompression">
+            <summary>
+             Defines TIFF image compression.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.TIFFCompression.None">
+            <summary>
+             (0) Uncompressed TIFF
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.TIFFCompression.LZW">
+            <summary>
+             (1) LZW compression
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.TIFFCompression.CCITT3">
+            <summary>
+             (2) CCITT3 compression
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.TIFFCompression.CCITT4">
+            <summary>
+             (3) CCITT4 compression
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.TIFFCompression.JPEG">
+            <summary>
+             (4) JPEG compression
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.TIFFCompression.RLE">
+            <summary>
+             (5) RLE compression
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.ImageBitsPerPixel">
+            <summary>
+            Defines image pixel format.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.ImageBitsPerPixel.BPP1">
+            <summary>
+            1 bit per pixel.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.ImageBitsPerPixel.BPP8">
+            <summary>
+            8 bits per pixel.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.ImageBitsPerPixel.BPP24">
+            <summary>
+            24 bits per pixel.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.ImageBitsPerPixel.BPP32">
+            <summary>
+            32 bits per pixel.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.OneBitConversionAlgorithm">
+            <summary>
+            The algorithm to use for conversion to 1-bit (black and white) image.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.OneBitConversionAlgorithm.OtsuThreshold">
+            <summary>
+            Use OTSU threshold algorithm
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.OneBitConversionAlgorithm.BayerOrderedDithering">
+            <summary>
+            Use Bayer Ordered Dithering algorithm.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.FontHintingMode">
+            <summary>
+            Font hinting mode. Works only if <see cref="P:Bytescout.PDFRenderer.RenderingOptions.TextSmoothingMode" /> is equal <see cref="F:Bytescout.PDFRenderer.GraphicsTransformationQuality.HighQuality" />.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.FontHintingMode.Default">
+            <summary>
+            Default font hinting mode providing optimal look with small font sizes.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.FontHintingMode.Stronger">
+            <summary>
+            Stronger hinting mode. Small fonts may become worse to read.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.RenderingOptions">
+            <summary>
+            Rendering options.
+            </summary>
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.TextSmoothingMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.VectorSmoothingMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.ImageInterpolationMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.RenderTextObjects">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.RenderVectorObjects">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.RenderImageObjects">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.RenderCurveVectorObjects">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.PreferSystemFonts">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.JPEGQuality">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.TIFFCompression">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.RotateFlipType">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.ImageBitsPerPixel">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.OneBitConversionAlgorithm">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.FontHintingMode">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.ResolutionOverride">
+            <inheritdoc />
+        </member>
+        <member name="P:Bytescout.PDFRenderer.RenderingOptions.NightMode">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RenderingOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.RenderingOptions" /> class.
+            </summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.VectorRenderer">
+            <summary>
+             Represents PDF to Vector image renderer.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.#ctor">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.VectorRenderer" /> class.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.#ctor(System.String,System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.VectorRenderer" /> class.
+            </summary>
+            <param name="registrationName">Registration name.</param>
+            <param name="registrationKey">Registration key.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.GetMetafile(System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.GetMetafile(System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.GetMetafile(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.GetMetafile(System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.String,System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.String,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.String,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.String,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.IO.Stream,System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.IO.Stream,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.IO.Stream,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.VectorRenderer.Save(System.IO.Stream,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Bytescout.PDFRenderer.RasterImageFormat">
+            <summary>
+             Defines raster image output formats.
+            </summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RasterImageFormat.BMP">
+            <summary> (0) Bitmap (BMP).</summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RasterImageFormat.JPEG">
+            <summary> (1) JPEG (JPG).</summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RasterImageFormat.PNG">
+            <summary> (2) Portable Network Graphics (PNG).</summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RasterImageFormat.TIFF">
+            <summary> (3) TIFF (TIF).</summary>
+        </member>
+        <member name="F:Bytescout.PDFRenderer.RasterImageFormat.GIF">
+            <summary> (4) GIF.</summary>
+        </member>
+        <member name="T:Bytescout.PDFRenderer.RasterRenderer">
+            <summary>
+             Represents PDF to raster image renderer.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.#ctor">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.RasterRenderer" /> class.
+            </summary>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.#ctor(System.String,System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Bytescout.PDFRenderer.RasterRenderer" /> class.
+            </summary>
+            <param name="registrationName">Registration name.</param>
+            <param name="registrationKey">Registration key.</param>
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.GetImage(System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.GetImage(System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.GetImage(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.GetImage(System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.String,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.Save(System.IO.Stream,Bytescout.PDFRenderer.RasterImageFormat,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.String,System.Int32,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Single,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bytescout.PDFRenderer.RasterRenderer.SaveMultipageTiff(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32,Bytescout.PDFRenderer.RenderingOptions)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
